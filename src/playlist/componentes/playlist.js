@@ -20,6 +20,7 @@ function Playlist(props){
                     color="red" />
             <Volume size={50}
                     color="red"/>
+                    
             {
                 playlist.map((item) => {
                     return <Media 
