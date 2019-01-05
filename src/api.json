@@ -1,9 +1,11 @@
 {
-    "categories": [{
+    "categories": [
+        {
             "id": 1,
             "description": "Lo mejor de la semana",
             "title": "Destacados",
-            "playlist": [{
+            "playlist": [
+                {
                     "title": "¿Qué es responsive Design?",
                     "author": "LeonidasEsteban",
                     "type": "video",
