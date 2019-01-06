@@ -10,7 +10,9 @@ function Playlist(props){
                 props.playlist.map((item) => {
                     return <Media 
                                 {...item}
-                                key = {item.id}/>
+                                key = {item.id}
+                                handleClick = {props.handleOpenModal}
+                           />
                 })
             }
             
