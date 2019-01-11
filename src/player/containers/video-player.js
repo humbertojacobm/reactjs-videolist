@@ -4,12 +4,13 @@ import Video from '../components/video';
 import Title from '../components/title';
 import PlayPause from '../components/play-pause';
 import Timer from '../components/timer';
+import {formattedTime} from '../../utils/utils';
 import Controls from '../components/video-player-controls';
 
 class VideoPlayer extends Component {
   state = {
     pause: true,
-    duration: 0,
+    duration: 0, 
     currentTime: 0,
   }
   componentDidMount(){
@@ -47,7 +48,7 @@ class VideoPlayer extends Component {
           />
           <Timer
             duration={this.state.duration}
-            currentTime={this.state.currentTime}
+            currentTime={formattedTime(this.state.currentTime)}
           />
          </Controls>
          <Video
