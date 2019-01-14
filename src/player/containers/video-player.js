@@ -9,13 +9,15 @@ import Controls from '../components/video-player-controls';
 import ProgressBar from '../components/progress-bar';
 import Spinner from '../components/spinner';
 import Volume from '../components/volume';
-
 class VideoPlayer extends Component {
+  
   state = {
     pause: true,
     duration: 0, 
     currentTime: 0,
     loading: false,
+    volumeValue:1,
+    previousVolumeValue:0,
   }
   componentDidMount(){
     this.setState({
@@ -53,7 +55,23 @@ class VideoPlayer extends Component {
     })
   }
   handleVolumeChange = event => {
-    this.video.volume = event.target.value;
+    this.setState({
+      volumeValue: event.target.value,
+    })
+    this.video.volume = this.state.volumeValue;
+  }
+  handleVolumenClick = event => {    
+    this.setState({
+      volumeValue: this.state.previousVolumeValue,
+    }, function(){      
+      this.setState({
+        previousVolumeValue: this.video.volume,
+      })
+      this.video.volume = this.state.volumeValue;
+    })
+  }
+  handleRangeClick = event => {
+    event.stopPropagation();
   }
   render(){
     return(
@@ -77,6 +95,9 @@ class VideoPlayer extends Component {
           />
           <Volume
             handleVolumeChange={this.handleVolumeChange}
+            handleClick={this.handleVolumenClick}
+            handleRangeClick={this.handleRangeClick}
+            value={this.state.volumeValue}
           />
          </Controls>
          <Spinner
